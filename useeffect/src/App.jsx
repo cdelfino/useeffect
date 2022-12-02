@@ -10,8 +10,9 @@ function App() {
   // cuando no tiene nada ==> que se ejecuta con cada renderizado
   // cuando tiene [] se ejecuta una vez
   //[variables] cada vez que se cambie el valor de la variable, se va a ejecutar
-  const [personajes, setPersonajes] =useState([])
-  let [pagina,setPagina]=useState(1)
+  const [personajes, setPersonajes] = useState([])
+  let [pagina,setPagina] = useState(1)
+  //let [resultado,setResultado] = useState('')
 
   useEffect(()=>{
       console.log('se ejecuta useeffect')
@@ -23,15 +24,21 @@ function App() {
 
   },[pagina])
 
+  const busqueda=(e)=>{
+    console.log(e.target.value)
+    const resultadoBusqueda=personajes.filter(elemento=>elemento.name.toLowerCase().includes(e.target.value))
+    setPersonajes(resultadoBusqueda)
+  }
+
   return (
-    <div className='container'>
+    <div className="App">
       <div>
-        <input type="text" placeholder='Ingresa el nombre a buscar' onChange={(e)=>
-        personajes.filter(elemento=>elemento.name == e.target.value)
+        <input type="text" placeholder='Ingresa el nombre a buscar' onChange={(e)=>busqueda(e)
+        
         }/>
       </div>
 
-      <div className="App">
+      <div className='container'>
       {personajes.map(elemento=>(
       <div key={elemento.id} className='card'>
       <h2>{elemento.name}</h2>

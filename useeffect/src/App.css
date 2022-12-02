@@ -1,14 +1,19 @@
-body{
+body {
+    margin: 0;
     display: flex;
-    justify-content: center;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
-
-.App{
+.container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.container{
+.App{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,13 +49,13 @@ img{
 }
 
 @media (max-width: 1178px) {
-    .App{
+    .container{
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 @media (max-width: 791px) {
-    .App{
+    .container{
         display: flex;
         flex-direction: column;
     }
